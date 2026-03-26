@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="CineFast"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Snacks and Drinks"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Popcorn -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/popcorn"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Popcorn"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Rs 500"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnMinus1"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/minus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+
+                    <TextView
+                        android:id="@+id/txtQty1"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btnPlus1"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/plus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Fries -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/fries"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Fries"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Rs 300"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusFries"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/minus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+
+                    <TextView
+                        android:id="@+id/txtQtyFries"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btnPlusFries"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/plus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Sushi -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/sushi"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Sushi"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Rs 100"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusSushi"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/minus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+
+                    <TextView
+                        android:id="@+id/txtQtySushi"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btnPlusSushi"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/plus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Jelly -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/jelly"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Jelly"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Rs 50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusJelly"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/minus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+
+                    <TextView
+                        android:id="@+id/txtQtyJelly"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btnPlusJelly"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/plus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Coke -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/coke"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginStart="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Coke"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="Rs 50"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusCoke"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/minus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+
+                    <TextView
+                        android:id="@+id/txtQtyCoke"
+                        android:text="0"
+                        android:gravity="center"
+                        android:layout_width="40dp"
+                        android:layout_height="35dp"/>
+
+                    <ImageButton
+                        android:id="@+id/btnPlusCoke"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/plus"
+                        android:background="@null"
+                        android:scaleType="fitCenter"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnConfirmSnacks"
+            android:text="Confirm"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>
