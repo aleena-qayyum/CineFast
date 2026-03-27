@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#121212"
@@ -11,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Movie Name -->
         <TextView
             android:id="@+id/tvMovieName"
             android:layout_width="match_parent"
@@ -22,41 +22,44 @@
             android:gravity="center"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Seat Count -->
+        <!-- Tickets Section -->
         <TextView
-            android:id="@+id/tvSeatCount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Seats: 0"
+            android:text="Tickets"
             android:textSize="18sp"
             android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:id="@+id/tvSeatPrice"
+        <LinearLayout
+            android:id="@+id/llTickets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seat Price: Rs. 0"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Snacks Section -->
+        <TextView
+            android:text="Snacks"
             android:textSize="18sp"
             android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"/>
 
-        <!-- Snack Price -->
-        <TextView
-            android:id="@+id/tvSnackPrice"
+        <LinearLayout
+            android:id="@+id/llSnacks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Snack Price: Rs. 0"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
-            android:layout_marginBottom="8dp"/>
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"/>
 
         <!-- Total Price -->
         <TextView
             android:id="@+id/tvTotalPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Total Price: Rs. 0"
+            android:text="Total Price: Rs 0"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"

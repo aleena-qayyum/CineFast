@@ -11,33 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.A1_23L0981">
-        <activity
-            android:name=".SnackDrinkScreen"
-            android:exported="false" />
-        <activity
-            android:name=".TicketSummaryScreen"
-            android:exported="false" />
-        <activity
-            android:name=".SeatSelectionScreen"
-            android:exported="false" />
-        <activity
-            android:name=".HomeScreen"
-            android:exported="false" />
+
         <activity
             android:name=".splash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Dashboard activity -->
+        </activity>
+
         <activity
             android:name=".Onboarding"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-    </application>
 
+    </application>
 </manifest>

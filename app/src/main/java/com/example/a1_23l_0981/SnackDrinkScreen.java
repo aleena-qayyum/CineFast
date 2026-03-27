@@ -78,7 +78,7 @@ public class SnackDrinkScreen extends AppCompatActivity {
             int snackTotal = (qtyPop * 250) + (qtyCola * 150) + (qtyFries * 200);
             int finalTotal = seatTotal + snackTotal;
 
-            Intent intent = new Intent(SnackDrinkScreen.this, TicketSummaryScreen.class);
+            Intent intent = new Intent(SnackDrinkScreen.this, TicketSummaryFragment.class);
             intent.putExtra("movieName", movieName);
             intent.putExtra("seatCount", seatCount);
             intent.putExtra("seatTotal", seatTotal);

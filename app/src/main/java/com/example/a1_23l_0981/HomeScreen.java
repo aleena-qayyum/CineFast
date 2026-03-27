@@ -28,7 +28,7 @@ public class HomeScreen extends AppCompatActivity {
         });
 
         book1.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeScreen.this, SeatSelectionScreen.class);
+            Intent intent = new Intent(HomeScreen.this, SeatSelectionFragment.class);
             intent.putExtra("movieName", "The devil wears prada");
             startActivity(intent);
         });
@@ -44,7 +44,7 @@ public class HomeScreen extends AppCompatActivity {
         });
 
         book2.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeScreen.this, SeatSelectionScreen.class);
+            Intent intent = new Intent(HomeScreen.this, SeatSelectionFragment.class);
             intent.putExtra("movieName", "27 dresses");
             startActivity(intent);
         });
@@ -61,7 +61,7 @@ public class HomeScreen extends AppCompatActivity {
 
 
         book3.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeScreen.this, SeatSelectionScreen.class);
+            Intent intent = new Intent(HomeScreen.this, SeatSelectionFragment.class);
             intent.putExtra("movieName", "How to lose a guy in 10 days");
             startActivity(intent);
         });
