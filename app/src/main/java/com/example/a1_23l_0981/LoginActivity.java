@@ -93,11 +93,24 @@ public class LoginActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> onBackPressed());
 
         tvForgotPassword.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, HomeScreen.class));
+            String email = etEmail.getText().toString().trim();
+
+            if (TextUtils.isEmpty(email)) {
+                etEmail.setError("Enter your email first");
+                etEmail.requestFocus();
+                return;
+            }
+
+            mAuth.sendPasswordResetEmail(email)
+                    .addOnCompleteListener(task -> Toast.makeText(
+                            LoginActivity.this,
+                            task.isSuccessful() ? "Reset email sent!" : "Failed to send reset email",
+                            Toast.LENGTH_SHORT
+                    ).show());
         });
 
         tvRegisterLink.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, HomeScreen.class));
+            startActivity(new Intent(LoginActivity.this, SignupActivity.class));
         });
 
         btnLogin.setOnClickListener(v -> attemptLogin());
@@ -172,8 +185,11 @@ public class LoginActivity extends AppCompatActivity {
     public static void clearSession(android.content.Context context) {
         context.getSharedPreferences("UserSession", MODE_PRIVATE)
                 .edit()
-                .remove(KEY_IS_LOGGED_IN)
+                .putBoolean("is_logged_in", false)
+                .remove("email")
                 .apply();
+
+        FirebaseAuth.getInstance().signOut();
     }
 
     private void setLoading(boolean loading) {
