@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.UUID;
 
 public class TicketSummaryFragment extends Fragment {
 
@@ -107,7 +108,16 @@ public class TicketSummaryFragment extends Fragment {
     // ── Firebase Save ────────────────────────────────────────────────────────────
 
     private void saveBookingToFirebase(String movieName, int seatCount, int totalPrice) {
+        DatabaseReference ref1 = FirebaseDatabase.getInstance().getReference();
 
+        ref1.child("TEST_NODE").setValue("HELLO FIREBASE")
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("TEST", "WRITE SUCCESS");
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("TEST", "WRITE FAILED", e);
+                });
+        Log.d("TEST", "User = " + FirebaseAuth.getInstance().getCurrentUser());
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
             Toast.makeText(getContext(), "Not logged in", Toast.LENGTH_SHORT).show();
@@ -115,23 +125,27 @@ public class TicketSummaryFragment extends Fragment {
         }
 
         String userId = user.getUid();
+        String bookingId = UUID.randomUUID().toString();
 
         String dateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                 .format(new Date());
 
-        Map<String, Object> booking = new HashMap<>();
-        booking.put("userId", userId);
-        booking.put("movieName", movieName);
-        booking.put("seats", seatCount);
-        booking.put("totalPrice", totalPrice);
-        booking.put("dateTime", dateTime);
+        // Build structured booking object (like your first code style)
+        Booking booking = new Booking(
+                bookingId,
+                userId,
+                movieName,
+                seatCount,
+                totalPrice,
+                dateTime
+        );
 
         DatabaseReference ref = FirebaseDatabase.getInstance()
                 .getReference("bookings")
-                .child(userId);
+                .child(userId)
+                .child(bookingId);
 
-
-        ref.push().setValue(booking)
+        ref.setValue(booking)
                 .addOnSuccessListener(unused -> {
                     Log.d("TEST", "SUCCESS Firebase write");
                     Toast.makeText(requireContext(), "Booking saved!", Toast.LENGTH_SHORT).show();

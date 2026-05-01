@@ -159,24 +159,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     // ── My Bookings Dialog ───────────────────────────────────────────────────────
 
     private void showLastBookingDialog() {
-        SharedPreferences prefs = getSharedPreferences("CineFastBookings", Context.MODE_PRIVATE);
-        String movieName = prefs.getString("last_movie_name", null);
-        int seatCount    = prefs.getInt("last_seat_count", 0);
-        int totalPrice   = prefs.getInt("last_total_price", 0);
 
-        String message = (movieName == null || movieName.isEmpty())
-                ? "No previous booking found."
-                : "Last Booking\n\nMovie: " + movieName
-                + "\nSeats: " + seatCount
-                + "\nTotal Price: Rs " + totalPrice;
+        MyBookingsFragment fragment = new MyBookingsFragment();
 
-        new AlertDialog.Builder(this)
-                .setTitle("My Bookings")
-                .setMessage(message)
-                .setPositiveButton("OK", null)
-                .show();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment) // IMPORTANT
+                .addToBackStack(null)
+                .commit();
     }
-
     // ── Logout ───────────────────────────────────────────────────────────────────
 
     private void confirmLogout() {
