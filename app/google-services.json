@@ -2,7 +2,8 @@
   "project_info": {
     "project_number": "738155460636",
     "project_id": "cinefast-3d56b",
-    "storage_bucket": "cinefast-3d56b.firebasestorage.app"
+    "storage_bucket": "cinefast-3d56b.firebasestorage.app",
+    "firebase_url": "https://cinefast-3d56b-default-rtdb.firebaseio.com"
   },
   "client": [
     {
