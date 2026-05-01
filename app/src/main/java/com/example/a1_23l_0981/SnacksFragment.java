@@ -7,9 +7,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.util.List;
 
 public class SnacksFragment extends Fragment {
 
@@ -17,11 +20,8 @@ public class SnacksFragment extends Fragment {
     private int seatCount = 0;
     private int seatTotal = 0;
 
-    private int qtyPopcorn = 0;
-    private int qtyFries = 0;
-    private int qtySushi = 0;
-    private int qtyJelly = 0;
-    private int qtyCoke = 0;
+    private int[] quantities;
+    private List<Snacks> snackList;
 
     @Nullable
     @Override
@@ -34,36 +34,33 @@ public class SnacksFragment extends Fragment {
             seatTotal = getArguments().getInt("seatTotal", 0);
         }
 
-        setupPopcorn(view);
-        setupFries(view);
-        setupSushi(view);
-        setupJelly(view);
-        setupCoke(view);
-
-        // Replace your current confirm button code with this:
+        // load snacks from sqlite db
+        SnacksRepo repo = new SnacksRepo(requireContext());
+        snackList = repo.getAllSnacks();
+        quantities = new int[snackList.size()];
+        setupSnackViews(view);
 
         Button confirm = view.findViewById(R.id.btnConfirmSnacks);
         confirm.setOnClickListener(v -> {
-            int snackTotal = (qtyPopcorn * 500) + (qtyFries * 300) +
-                    (qtySushi * 100) + (qtyJelly * 50) + (qtyCoke * 50);
-
-            // === NEW: Create snack details string to pass ===
+            int snackTotal = 0;
             StringBuilder snackDetails = new StringBuilder();
 
-            if (qtyPopcorn > 0) snackDetails.append("Popcorn x").append(qtyPopcorn).append("\n");
-            if (qtyFries > 0)   snackDetails.append("Fries x").append(qtyFries).append("\n");
-            if (qtySushi > 0)   snackDetails.append("Sushi x").append(qtySushi).append("\n");
-            if (qtyJelly > 0)   snackDetails.append("Jelly x").append(qtyJelly).append("\n");
-            if (qtyCoke > 0)    snackDetails.append("Coke x").append(qtyCoke).append("\n");
+            for (int i = 0; i < snackList.size(); i++) {
+                if (quantities[i] > 0) {
+                    snackTotal += quantities[i] * snackList.get(i).getPrice();
+                    snackDetails.append(snackList.get(i).getName())
+                            .append(" x").append(quantities[i])
+                            .append("\n");
+                }
+            }
 
-            // Send to Ticket Summary with real snack info
             if (requireActivity() instanceof MainActivity) {
                 ((MainActivity) requireActivity()).openTicketSummary(
                         movieName,
                         seatCount,
                         seatTotal,
                         snackTotal,
-                        snackDetails.toString().trim()   // ← pass real snacks
+                        snackDetails.toString().trim()
                 );
             }
         });
@@ -71,93 +68,33 @@ public class SnacksFragment extends Fragment {
         return view;
     }
 
-    private void setupPopcorn(View view) {
-        ImageButton plus = view.findViewById(R.id.btnPlus1);
-        ImageButton minus = view.findViewById(R.id.btnMinus1);
-        TextView qty = view.findViewById(R.id.txtQty1);
+    private void setupSnackViews(View view) {
+        int[] plusIds  = { R.id.btnPlus1, R.id.btnPlusFries, R.id.btnPlusSushi, R.id.btnPlusJelly, R.id.btnPlusCoke };
+        int[] minusIds = { R.id.btnMinus1, R.id.btnMinusFries, R.id.btnMinusSushi, R.id.btnMinusJelly, R.id.btnMinusCoke };
+        int[] qtyIds   = { R.id.txtQty1, R.id.txtQtyFries, R.id.txtQtySushi, R.id.txtQtyJelly, R.id.txtQtyCoke };
 
-        plus.setOnClickListener(v -> {
-            qtyPopcorn++;
-            qty.setText(String.valueOf(qtyPopcorn));
-        });
+        for (int i = 0; i < snackList.size(); i++) {
+            final int index = i;
 
-        minus.setOnClickListener(v -> {
-            if (qtyPopcorn > 0) {
-                qtyPopcorn--;
-                qty.setText(String.valueOf(qtyPopcorn));
-            }
-        });
-    }
+            ImageButton plus  = view.findViewById(plusIds[i]);
+            ImageButton minus = view.findViewById(minusIds[i]);
+            TextView qty      = view.findViewById(qtyIds[i]);
 
-    private void setupFries(View view) {
-        ImageButton plus = view.findViewById(R.id.btnPlusFries);
-        ImageButton minus = view.findViewById(R.id.btnMinusFries);
-        TextView qty = view.findViewById(R.id.txtQtyFries);
+            if (plus == null || minus == null || qty == null) continue;
 
-        plus.setOnClickListener(v -> {
-            qtyFries++;
-            qty.setText(String.valueOf(qtyFries));
-        });
+            qty.setText("0");
 
-        minus.setOnClickListener(v -> {
-            if (qtyFries > 0) {
-                qtyFries--;
-                qty.setText(String.valueOf(qtyFries));
-            }
-        });
-    }
+            plus.setOnClickListener(v -> {
+                quantities[index]++;
+                qty.setText(String.valueOf(quantities[index]));
+            });
 
-    private void setupSushi(View view) {
-        ImageButton plus = view.findViewById(R.id.btnPlusSushi);
-        ImageButton minus = view.findViewById(R.id.btnMinusSushi);
-        TextView qty = view.findViewById(R.id.txtQtySushi);
-
-        plus.setOnClickListener(v -> {
-            qtySushi++;
-            qty.setText(String.valueOf(qtySushi));
-        });
-
-        minus.setOnClickListener(v -> {
-            if (qtySushi > 0) {
-                qtySushi--;
-                qty.setText(String.valueOf(qtySushi));
-            }
-        });
-    }
-
-    private void setupJelly(View view) {
-        ImageButton plus = view.findViewById(R.id.btnPlusJelly);
-        ImageButton minus = view.findViewById(R.id.btnMinusJelly);
-        TextView qty = view.findViewById(R.id.txtQtyJelly);
-
-        plus.setOnClickListener(v -> {
-            qtyJelly++;
-            qty.setText(String.valueOf(qtyJelly));
-        });
-
-        minus.setOnClickListener(v -> {
-            if (qtyJelly > 0) {
-                qtyJelly--;
-                qty.setText(String.valueOf(qtyJelly));
-            }
-        });
-    }
-
-    private void setupCoke(View view) {
-        ImageButton plus = view.findViewById(R.id.btnPlusCoke);
-        ImageButton minus = view.findViewById(R.id.btnMinusCoke);
-        TextView qty = view.findViewById(R.id.txtQtyCoke);
-
-        plus.setOnClickListener(v -> {
-            qtyCoke++;
-            qty.setText(String.valueOf(qtyCoke));
-        });
-
-        minus.setOnClickListener(v -> {
-            if (qtyCoke > 0) {
-                qtyCoke--;
-                qty.setText(String.valueOf(qtyCoke));
-            }
-        });
+            minus.setOnClickListener(v -> {
+                if (quantities[index] > 0) {
+                    quantities[index]--;
+                    qty.setText(String.valueOf(quantities[index]));
+                }
+            });
+        }
     }
 }

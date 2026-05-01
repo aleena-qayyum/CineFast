@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.A1_23L0981">
         <activity
+            android:name=".SnacksRepo"
+            android:exported="false" />
+        <activity
+            android:name=".SnackHelper"
+            android:exported="false" />
+        <activity
             android:name=".MovieHelper"
             android:exported="false" />
         <activity
