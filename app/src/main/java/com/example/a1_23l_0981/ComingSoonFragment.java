@@ -22,11 +22,7 @@ public class ComingSoonFragment extends Fragment implements MovieAdapter.OnBookL
         RecyclerView recyclerView = view.findViewById(R.id.recyclerComingSoon);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("a quiet place", "Sci-Fi | 2h 45m", "a quiet place", "https://www.youtube.com/watch?v=TcMBFSGVi1c", false));
-        movies.add(new Movie("quiet place 2", "Action | 3h 10m", "quiet place 2", "https://www.youtube.com/watch?v=TcMBFSGVi1c", false));
-        movies.add(new Movie("gossip girl", "Drama | 2h 20m", "gossip girl", "https://www.youtube.com/watch?v=TcMBFSGVi1c", false));
-
+        List<Movie> movies = MovieHelper.loadMovies(getContext(), "coming_soon");
         MovieAdapter adapter = new MovieAdapter(getContext(), movies, this);
         recyclerView.setAdapter(adapter);
 

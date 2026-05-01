@@ -1,0 +1,48 @@
+{
+  "now_showing": [
+    {
+      "title": "The Devil Wears Prada",
+      "genre_duration": "Rom Com | 2h 49m",
+      "poster": "the_devil_wears_prada",
+      "trailer_url": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+      "is_now_showing": true
+    },
+    {
+      "title": "27 Dresses",
+      "genre_duration": "Action | 3h 1m",
+      "poster": "dresses_27",
+      "trailer_url": "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+      "is_now_showing": true
+    },
+    {
+      "title": "How to Lose a Guy in 10 Days",
+      "genre_duration": "Horror | 1h 52m",
+      "poster": "how_to_lose_a_guy_in_10_days",
+      "trailer_url": "https://www.youtube.com/watch?v=k10ETZ41q5o",
+      "is_now_showing": true
+    }
+  ],
+  "coming_soon": [
+    {
+      "title": "A Quiet Place",
+      "genre_duration": "Sci-Fi | 2h 45m",
+      "poster": "a_quiet_place",
+      "trailer_url": "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+      "is_now_showing": false
+    },
+    {
+      "title": "Quiet Place 2",
+      "genre_duration": "Action | 3h 10m",
+      "poster": "quiet_place_2",
+      "trailer_url": "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+      "is_now_showing": false
+    },
+    {
+      "title": "Gossip Girl",
+      "genre_duration": "Drama | 2h 20m",
+      "poster": "gossip_girl",
+      "trailer_url": "https://www.youtube.com/watch?v=TcMBFSGVi1c",
+      "is_now_showing": false
+    }
+  ]
+}

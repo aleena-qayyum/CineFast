@@ -22,11 +22,7 @@ public class NowShowingFragment extends Fragment implements MovieAdapter.OnBookL
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("The Devil Wears Prada", "Rom Com | 2h 49m", "the_devil_wears_prada", "https://www.youtube.com/watch?v=zSWdZVtXT7E", true));
-        movies.add(new Movie("27 Dresses", "Action | 3h 1m", "dresses_27", "https://www.youtube.com/watch?v=TcMBFSGVi1c", true));
-        movies.add(new Movie("How to Lose a Guy in 10 Days", "Horror | 1h 52m", "how_to_lose_a_guy_in_10_days", "https://www.youtube.com/watch?v=k10ETZ41q5o", true));
-
+        List<Movie> movies = MovieHelper.loadMovies(getContext(), "now_showing");
         MovieAdapter adapter = new MovieAdapter(getContext(), movies, this);
         recyclerView.setAdapter(adapter);
 
